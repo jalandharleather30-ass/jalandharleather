@@ -1,0 +1,91 @@
+<!-- Team Image Placeholder Generator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .team-image {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #654321 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-family: Georgia, serif;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="15" fill="rgba(255,255,255,0.1)"/><path d="M25 70 Q50 55 75 70 Q50 85 25 70 Z" fill="rgba(255,255,255,0.1)"/></svg>') center/contain no-repeat;
+            opacity: 0.3;
+        }
+        
+        .founder-name {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+        
+        .founder-title {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #FFE4B5;
+            z-index: 1;
+        }
+        
+        .company-name {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+            z-index: 1;
+        }
+        
+        .since-year {
+            font-size: 16px;
+            opacity: 0.8;
+            border: 2px solid rgba(255,255,255,0.5);
+            padding: 8px 16px;
+            border-radius: 25px;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            margin-top: 16px;
+            opacity: 0.7;
+            font-style: italic;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="team-image">
+        <div class="founder-name">Aashta Mehta</div>
+        <div class="founder-title">Founder & Designer</div>
+        <div class="company-name">Jalandhar Leather</div>
+        <div class="since-year">Since 2018</div>
+        <div class="subtitle">"Crafting Excellence in Every Stitch"</div>
+    </div>
+    
+    <p style="margin-top: 20px; text-align: center; color: #666;">
+        <strong>Instructions:</strong><br>
+        1. Take a screenshot of the image above<br>
+        2. Save as: <code>founder-aashta-mehta.jpg</code><br>
+        3. Place in: <code>public/images/team/</code><br>
+        4. Or replace with actual founder photo
+    </p>
+</body>
+</html>

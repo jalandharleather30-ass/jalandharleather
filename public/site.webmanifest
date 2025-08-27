@@ -1,0 +1,29 @@
+{
+  "name": "Jalandhar Leather - Premium Handmade Leather Goods",
+  "short_name": "Jalandhar Leather",
+  "description": "Premium handmade leather goods from Jalandhar, India. Exquisite ladies handbags, leather purses, jackets & custom accessories.",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#B8860B",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/",
+  "categories": ["shopping", "lifestyle", "fashion"]
+}

@@ -1,0 +1,779 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Product Name"
+      },
+      {
+        "options": {
+          "source": "name",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Ladies Handbags",
+              "value": "ladies-handbags"
+            },
+            {
+              "title": "Premium Leather Purses",
+              "value": "premium-purses"
+            },
+            {
+              "title": "Ladies Leather Jackets",
+              "value": "ladies-jackets"
+            },
+            {
+              "title": "Customized Leather Accessories",
+              "value": "custom-accessories"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "ladies-handbags",
+                  "premium-purses",
+                  "ladies-jackets",
+                  "custom-accessories"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "fields": [
+              {
+                "name": "alt",
+                "type": "string",
+                "title": "Alternative Text"
+              }
+            ],
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array",
+        "title": "Product Images"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "features",
+        "type": "array",
+        "title": "Key Features"
+      },
+      {
+        "name": "materials",
+        "type": "string",
+        "title": "Materials Used"
+      },
+      {
+        "name": "dimensions",
+        "type": "string"
+      },
+      {
+        "name": "price",
+        "type": "number",
+        "title": "Starting Price (Optional)"
+      },
+      {
+        "initialValue": false,
+        "description": "Featured products will appear on the homepage",
+        "name": "isFeatured",
+        "type": "boolean",
+        "title": "Featured Product"
+      },
+      {
+        "initialValue": true,
+        "name": "isAvailable",
+        "type": "boolean",
+        "title": "Available for Order"
+      },
+      {
+        "description": "Instructions for caring and maintaining the product",
+        "name": "care",
+        "type": "text",
+        "title": "Care Instructions"
+      },
+      {
+        "description": "Primary color of the product",
+        "name": "color",
+        "type": "string"
+      },
+      {
+        "description": "Weight of the product (e.g., 800g)",
+        "name": "weight",
+        "type": "string"
+      },
+      {
+        "fields": [
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "max",
+                    "constraint": 60
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "metaTitle",
+            "type": "string"
+          },
+          {
+            "rows": 3,
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "max",
+                    "constraint": 160
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "metaDescription",
+            "type": "text"
+          }
+        ],
+        "name": "seo",
+        "type": "object",
+        "title": "SEO Settings"
+      }
+    ],
+    "name": "product",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": "Jalandhar Leather",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Site Title"
+      },
+      {
+        "initialValue": "Where Craft Meets Class",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "tagline",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "initialValue": "Since 2018, Jalandhar Leather has been crafting high-quality leather goods that blend timeless elegance with modern design. Based in Jalandhar, we specialize in creating products that reflect skilled craftsmanship and premium material selection, ensuring durability and style for our customers across India and beyond.",
+        "name": "description",
+        "type": "text",
+        "title": "Site Description"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "+919004672562",
+            "name": "phone",
+            "type": "string",
+            "title": "Phone Number"
+          },
+          {
+            "initialValue": "jalandharleather30@gmail.com",
+            "name": "email",
+            "type": "string",
+            "title": "Email Address"
+          },
+          {
+            "rows": 2,
+            "initialValue": "Kapurthala Road, 1 & 3, Leather Complex Rd, Jalandhar, Punjab, India",
+            "name": "address",
+            "type": "text",
+            "title": "Physical Address"
+          }
+        ],
+        "name": "contact",
+        "type": "object",
+        "title": "Contact Information"
+      },
+      {
+        "fields": [
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "uri",
+                    "constraint": {
+                      "options": {
+                        "scheme": [
+                          "/^http$/",
+                          "/^https$/"
+                        ],
+                        "allowRelative": false,
+                        "relativeOnly": false,
+                        "allowCredentials": false
+                      }
+                    }
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "facebook",
+            "type": "url",
+            "title": "Facebook URL"
+          },
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "uri",
+                    "constraint": {
+                      "options": {
+                        "scheme": [
+                          "/^http$/",
+                          "/^https$/"
+                        ],
+                        "allowRelative": false,
+                        "relativeOnly": false,
+                        "allowCredentials": false
+                      }
+                    }
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "instagram",
+            "type": "url",
+            "title": "Instagram URL"
+          },
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "uri",
+                    "constraint": {
+                      "options": {
+                        "scheme": [
+                          "/^http$/",
+                          "/^https$/"
+                        ],
+                        "allowRelative": false,
+                        "relativeOnly": false,
+                        "allowCredentials": false
+                      }
+                    }
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "twitter",
+            "type": "url",
+            "title": "Twitter URL"
+          },
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "uri",
+                    "constraint": {
+                      "options": {
+                        "scheme": [
+                          "/^http$/",
+                          "/^https$/"
+                        ],
+                        "allowRelative": false,
+                        "relativeOnly": false,
+                        "allowCredentials": false
+                      }
+                    }
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "linkedin",
+            "type": "url",
+            "title": "LinkedIn URL"
+          }
+        ],
+        "name": "socialMedia",
+        "type": "object",
+        "title": "Social Media Links"
+      },
+      {
+        "initialValue": [
+          {
+            "title": "100% Handmade Excellence",
+            "description": "Every piece is carefully crafted by skilled artisans with attention to detail.",
+            "icon": "HandThumbUpIcon"
+          },
+          {
+            "title": "Premium & Sustainable Leather",
+            "description": "We use only the finest quality leather that ages beautifully over time.",
+            "icon": "ShieldCheckIcon"
+          },
+          {
+            "title": "Attention to Detail in Every Stitch",
+            "description": "Precision craftsmanship ensures durability and elegant finishing.",
+            "icon": "SparklesIcon"
+          },
+          {
+            "title": "Bulk Production & Custom Designs",
+            "description": "We cater to both individual customers and bulk orders with custom designs.",
+            "icon": "CubeIcon"
+          }
+        ],
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "title",
+                "type": "string",
+                "title": "USP Title"
+              },
+              {
+                "rows": 2,
+                "name": "description",
+                "type": "text",
+                "title": "USP Description"
+              },
+              {
+                "description": "Enter a Heroicons name (e.g., \"HandThumbUpIcon\", \"SparklesIcon\")",
+                "name": "icon",
+                "type": "string",
+                "title": "Icon (Heroicon name)"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "usps",
+        "type": "array",
+        "title": "Unique Selling Points"
+      },
+      {
+        "description": "Primary contact phone number",
+        "name": "phone",
+        "type": "string",
+        "title": "Phone Number"
+      },
+      {
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "title": "Founder Name"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "title": "Founder Title"
+          },
+          {
+            "rows": 4,
+            "name": "bio",
+            "type": "text",
+            "title": "Founder Bio"
+          }
+        ],
+        "name": "founder",
+        "type": "object",
+        "title": "Founder Information"
+      },
+      {
+        "fields": [
+          {
+            "name": "established",
+            "type": "string",
+            "title": "Established Year"
+          },
+          {
+            "name": "specialization",
+            "type": "string"
+          },
+          {
+            "rows": 3,
+            "name": "mission",
+            "type": "text",
+            "title": "Mission Statement"
+          },
+          {
+            "rows": 3,
+            "name": "vision",
+            "type": "text",
+            "title": "Vision Statement"
+          }
+        ],
+        "name": "companyInfo",
+        "type": "object",
+        "title": "Company Information"
+      },
+      {
+        "fields": [
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "max",
+                    "constraint": 60
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "metaTitle",
+            "type": "string"
+          },
+          {
+            "rows": 3,
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "max",
+                    "constraint": 160
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "metaDescription",
+            "type": "text"
+          },
+          {
+            "description": "Image for social media sharing (Facebook, Twitter, etc.)",
+            "name": "ogImage",
+            "type": "image",
+            "title": "Social Media Image"
+          }
+        ],
+        "name": "seo",
+        "type": "object",
+        "title": "SEO Settings"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Hero Title"
+      },
+      {
+        "rows": 2,
+        "name": "subtitle",
+        "type": "text",
+        "title": "Hero Subtitle"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "fields": [
+          {
+            "name": "alt",
+            "type": "string",
+            "title": "Alternative Text"
+          }
+        ],
+        "name": "heroImage",
+        "type": "image",
+        "title": "Hero Background Image"
+      },
+      {
+        "initialValue": "Explore Our Collection",
+        "name": "ctaText",
+        "type": "string",
+        "title": "Call to Action Text"
+      },
+      {
+        "initialValue": "/collection",
+        "name": "ctaLink",
+        "type": "string",
+        "title": "Call to Action Link"
+      }
+    ],
+    "name": "heroSection",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Contact Form",
+              "value": "contact"
+            },
+            {
+              "title": "Bulk Order Form",
+              "value": "bulk-order"
+            },
+            {
+              "title": "Newsletter Signup",
+              "value": "newsletter"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "contact",
+                  "bulk-order",
+                  "newsletter"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "type",
+        "type": "string",
+        "title": "Form Type"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "name": "phone",
+        "type": "string",
+        "title": "Phone Number"
+      },
+      {
+        "name": "company",
+        "type": "string",
+        "title": "Company Name"
+      },
+      {
+        "rows": 4,
+        "name": "message",
+        "type": "text"
+      },
+      {
+        "name": "quantity",
+        "type": "number",
+        "title": "Quantity (for bulk orders)"
+      },
+      {
+        "name": "productType",
+        "type": "string"
+      },
+      {
+        "name": "submittedAt",
+        "type": "datetime"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "New",
+              "value": "new"
+            },
+            {
+              "title": "In Progress",
+              "value": "in-progress"
+            },
+            {
+              "title": "Responded",
+              "value": "responded"
+            },
+            {
+              "title": "Closed",
+              "value": "closed"
+            },
+            {
+              "title": "Spam",
+              "value": "spam"
+            }
+          ]
+        },
+        "initialValue": "new",
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "description": "IP address of the submitter for spam tracking",
+        "name": "ipAddress",
+        "type": "string",
+        "title": "IP Address"
+      },
+      {
+        "description": "Detected spam indicators",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "spamIndicators",
+        "type": "array"
+      },
+      {
+        "rows": 3,
+        "description": "Internal notes for tracking follow-up actions",
+        "name": "notes",
+        "type": "text",
+        "title": "Internal Notes"
+      }
+    ],
+    "name": "formSubmission",
+    "type": "document",
+    "title": "Form Submissions"
+  }
+]
