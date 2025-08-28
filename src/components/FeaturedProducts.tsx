@@ -30,7 +30,7 @@ export default function FeaturedProducts({ products = [] }: FeaturedProductsProp
   // Show placeholder if no products
   if (products.length === 0) {
     return (
-      <section className="py-24 bg-secondary-50">
+      <section className="pt-12 pb-24 bg-secondary-50">
         <div className="mx-auto max-w-8xl px-6 lg:px-8">
           <motion.div
             className="mx-auto max-w-2xl text-center"
@@ -66,7 +66,7 @@ export default function FeaturedProducts({ products = [] }: FeaturedProductsProp
   }
 
   return (
-    <section className="py-24 bg-secondary-50">
+    <section className="pt-12 pb-24 bg-secondary-50">
       <div className="mx-auto max-w-8xl px-6 lg:px-8">
         <motion.div
           className="mx-auto max-w-2xl text-center"
