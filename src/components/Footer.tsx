@@ -68,13 +68,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center py-1">
+            <Link href="/" className="flex items-center">
               <Image
                 src="/logo/site.png"
                 alt="Jalandhar Leather"
-                width={340}
-                height={85}
-                className="h-16 sm:h-18 md:h-20 lg:h-24 w-auto"
+                width={280}
+                height={70}
+                className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto logo-image"
+                style={{ maxHeight: '80px', width: 'auto' }}
               />
             </Link>
             <p className="mt-6 text-sm leading-6 text-secondary-600 max-w-md">

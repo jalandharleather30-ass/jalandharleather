@@ -49,6 +49,43 @@ select:focus {
   outline-offset: 2px;
 }
 
+/* Logo optimization for better visibility */
+.logo-image {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure logos don't get cut off on any device */
+header nav {
+  min-height: 60px;
+}
+
+@media (min-width: 640px) {
+  header nav {
+    min-height: 70px;
+  }
+}
+
+@media (min-width: 768px) {
+  header nav {
+    min-height: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  header nav {
+    min-height: 90px;
+  }
+}
+
+@media (min-width: 1280px) {
+  header nav {
+    min-height: 100px;
+  }
+}
+
 /* Image optimization */
 img {
   max-width: 100%;
