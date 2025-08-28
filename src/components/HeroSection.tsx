@@ -58,7 +58,11 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
     ctaLink: "/collection"
   }
 
-  const hero = heroData || defaultHero
+  // Use CMS data but force the button text to be shorter
+  const hero = heroData ? {
+    ...heroData,
+    ctaText: "Explore Collection" // Force shorter button text
+  } : defaultHero
 
   return (
     <section className="relative bg-white overflow-hidden">
@@ -110,7 +114,7 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                 >
                   <Link
                     href={hero.ctaLink}
-                    className="btn-primary text-lg px-8 py-4"
+                    className="btn-primary text-base px-6 py-3"
                   >
                     {hero.ctaText}
                   </Link>

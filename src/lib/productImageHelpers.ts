@@ -27,9 +27,9 @@ const PRODUCT_IMAGE_MAPPING: Record<string, Record<string, string>> = {
     'Blazer Style': '/images/products/jacket-6.png',
   },
   'custom-accessories': {
-    'Handcrafted Leather Keychain': '/images/products/accessory-1.png',
+    'Handcrafted Leather Keychain': '/images/products/accessory-3.png',
     'Leather Phone Case': '/images/products/accessory-2.png',
-    'Leather Belt': '/images/products/accessory-3.png',
+    'Leather Belt': '/images/products/accessory-1.png',
     'Key Holder': '/images/products/accessory-4.png',
     'Phone Case': '/images/products/accessory-5.png',
     'Laptop Bag': '/images/products/accessory-6.png',
