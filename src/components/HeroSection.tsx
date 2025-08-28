@@ -26,13 +26,13 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
     },
     {
       src: "/images/hero/hero-3.png",
-      alt: "Custom Leather Accessories - Bespoke Craftsmanship", 
-      caption: "Custom Leather Accessories"
+      alt: "Handcrafted Leather Jackets - Premium Quality",
+      caption: "Handcrafted Leather Jackets"
     },
     {
       src: "/images/hero/hero-4.png",
-      alt: "Handcrafted Leather Jackets - Premium Quality",
-      caption: "Handcrafted Leather Jackets"
+      alt: "Custom Leather Accessories - Bespoke Craftsmanship", 
+      caption: "Custom Leather Accessories"
     }
   ]
 
@@ -252,22 +252,6 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent z-10 pointer-events-none"></div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator - centered below hero, visible on all devices */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        <div className="w-6 h-10 border-2 border-secondary-300 rounded-full flex justify-center">
-          <motion.div
-            className="w-1 h-3 bg-primary-600 rounded-full mt-2"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
-      </motion.div>
     </section>
   )
 }
