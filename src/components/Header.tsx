@@ -46,11 +46,11 @@ export default function Header() {
           <Link href="/" className="block py-1">
             <span className="sr-only">Jalandhar Leather</span>
             <Image
-              className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto"
+              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto"
               src="/logo/site.png"
               alt="Jalandhar Leather"
-              width={320}
-              height={80}
+              width={380}
+              height={95}
               priority
             />
           </Link>
@@ -139,11 +139,11 @@ export default function Header() {
               <Link href="/" className="block py-1">
                 <span className="sr-only">Jalandhar Leather</span>
                 <Image
-                  className="h-12 w-auto"
+                  className="h-14 w-auto"
                   src="/logo/site.png"
                   alt="Jalandhar Leather"
-                  width={240}
-                  height={60}
+                  width={280}
+                  height={70}
                 />
               </Link>
               <button
