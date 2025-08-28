@@ -75,6 +75,28 @@ export default function FeaturedProducts({ products = [] }: FeaturedProductsProp
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
+          {/* Scroll Indicator */}
+          <motion.div
+            className="flex flex-col items-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="w-6 h-10 border-2 border-primary-300 rounded-full flex justify-center"
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <motion.div
+                className="w-1 h-3 bg-primary-500 rounded-full mt-2"
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
+            <span className="text-sm text-secondary-500 mt-2">Scroll down</span>
+          </motion.div>
+
           <h2 className="text-3xl font-bold tracking-tight text-secondary-900 sm:text-4xl font-serif">
             Featured Products
           </h2>

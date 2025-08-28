@@ -5,7 +5,6 @@ import FeaturedProducts from '@/components/FeaturedProducts'
 import USPSection from '@/components/USPSection'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import ScrollIndicator from '@/components/ScrollIndicator'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -69,9 +68,6 @@ export default async function Home() {
       
       {/* Hero Section */}
       <HeroSection heroData={heroData} />
-      
-      {/* Scroll Indicator */}
-      <ScrollIndicator />
       
       {/* Featured Products */}
       <FeaturedProducts products={featuredProducts} />
