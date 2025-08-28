@@ -43,14 +43,14 @@ export default function Header() {
       <nav className="mx-auto flex max-w-8xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-0.5 p-0.5">
             <span className="sr-only">Jalandhar Leather</span>
             <Image
-              className="h-12 w-auto"
+              className="h-16 w-auto"
               src="/logo/site.png"
               alt="Jalandhar Leather"
-              width={200}
-              height={48}
+              width={240}
+              height={64}
               priority
             />
           </Link>

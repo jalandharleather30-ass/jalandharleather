@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
@@ -44,7 +44,7 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
       setCurrentImageIndex((prevIndex) => 
         (prevIndex + 1) % heroImages.length
       )
-    }, 4000) // Change image every 4 seconds
+    }, 6000) // Increased to 6 seconds for better user experience
 
     return () => clearInterval(interval)
   }, [heroImages.length])
@@ -151,29 +151,34 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
             <>
               {/* Image Slider */}
               <div className="relative w-full h-full overflow-hidden">
-                {heroImages.map((image, index) => (
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.div
-                    key={index}
                     className="absolute inset-0"
-                    initial={{ opacity: 0 }}
-                    animate={{ 
-                      opacity: index === currentImageIndex ? 1 : 0 
+                    key={currentImageIndex}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ 
+                      duration: 0.7, 
+                      ease: [0.4, 0, 0.2, 1],
+                      opacity: { duration: 0.5 },
+                      scale: { duration: 0.7 }
                     }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
                   >
                     <Image
-                      src={image.src}
-                      alt={image.alt}
+                      src={heroImages[currentImageIndex].src}
+                      alt={heroImages[currentImageIndex].alt}
                       fill
                       className="object-cover object-center"
-                      priority={index === 0}
+                      priority={currentImageIndex === 0}
+                      sizes="100vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-primary-900/20 to-transparent"></div>
                     <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg">
-                      <p className="text-sm font-medium text-secondary-900">{image.caption}</p>
+                      <p className="text-sm font-medium text-secondary-900">{heroImages[currentImageIndex].caption}</p>
                     </div>
                   </motion.div>
-                ))}
+                </AnimatePresence>
               </div>
 
               {/* Slider Dots */}
