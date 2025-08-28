@@ -72,10 +72,10 @@ export default function Footer() {
               <Image
                 src="/logo/site.png"
                 alt="Jalandhar Leather"
-                width={280}
-                height={70}
-                className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto logo-image"
-                style={{ maxHeight: '80px', width: 'auto' }}
+                width={240}
+                height={60}
+                className="h-12 sm:h-13 md:h-14 lg:h-15 w-auto logo-image"
+                style={{ maxHeight: '60px', width: 'auto' }}
               />
             </Link>
             <p className="mt-6 text-sm leading-6 text-secondary-600 max-w-md">

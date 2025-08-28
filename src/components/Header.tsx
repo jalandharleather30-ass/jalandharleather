@@ -46,13 +46,13 @@ export default function Header() {
           <Link href="/" className="block">
             <span className="sr-only">Jalandhar Leather</span>
             <Image
-              className="h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 w-auto logo-image"
+              className="h-10 sm:h-12 md:h-13 lg:h-14 xl:h-15 w-auto logo-image"
               src="/logo/site.png"
               alt="Jalandhar Leather"
-              width={320}
-              height={80}
+              width={240}
+              height={60}
               priority
-              style={{ maxHeight: '80px', width: 'auto' }}
+              style={{ maxHeight: '60px', width: 'auto' }}
             />
           </Link>
         </div>

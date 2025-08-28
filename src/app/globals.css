@@ -50,11 +50,49 @@ select:focus {
 }
 
 /* Logo optimization for better visibility */
+/* Logo styling */
 .logo-image {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  max-width: 100%;
+  display: block;
   height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom height utilities for logo */
+.h-13 {
+  height: 3.25rem; /* 52px */
+}
+
+.h-15 {
+  height: 3.75rem; /* 60px */
+}
+
+/* Ensure logos are properly sized on different screens */
+@media (max-width: 640px) {
+  .logo-image {
+    max-height: 2.5rem; /* 40px on mobile */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .logo-image {
+    max-height: 3rem; /* 48px on small tablets */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo-image {
+    max-height: 3.25rem; /* 52px on tablets */
+  }
+}
+
+@media (min-width: 1025px) {
+  .logo-image {
+    max-height: 3.75rem; /* 60px on desktop */
+  }
 }
 
 /* Ensure logos don't get cut off on any device */
