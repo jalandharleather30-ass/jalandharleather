@@ -177,12 +177,12 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
               </div>
 
               {/* Slider Dots */}
-              <div className="absolute bottom-4 left-4 flex space-x-2">
+              <div className="absolute bottom-4 left-4 flex space-x-2 z-20">
                 {heroImages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    className={`w-3 h-3 rounded-full transition-all duration-300 pointer-events-auto ${
                       index === currentImageIndex
                         ? 'bg-white shadow-lg'
                         : 'bg-white/50 hover:bg-white/70'
@@ -197,7 +197,7 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                 onClick={() => setCurrentImageIndex((prev) => 
                   prev === 0 ? heroImages.length - 1 : prev - 1
                 )}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto"
                 aria-label="Previous image"
               >
                 <svg className="w-5 h-5 text-secondary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                 onClick={() => setCurrentImageIndex((prev) => 
                   (prev + 1) % heroImages.length
                 )}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto"
                 aria-label="Next image"
               >
                 <svg className="w-5 h-5 text-secondary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -218,13 +218,13 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
             </>
           )}
           {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent z-10 pointer-events-none"></div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - positioned to avoid slider overlap */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute bottom-8 left-8 z-20 hidden lg:block"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
