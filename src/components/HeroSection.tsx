@@ -17,7 +17,7 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
     {
       src: "/images/hero/hero-1.png",
       alt: "Premium Jalandhar Leather Handbags - Handcrafted Excellence",
-      caption: "Premium Leather Craftsmanship"
+      caption: "Premium Leather Handbags"
     },
     {
       src: "/images/hero/hero-2.png", 
@@ -25,12 +25,12 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
       caption: "Luxury Purses Collection"
     },
     {
-      src: "/images/hero/hero-3.png",
+      src: "/images/hero/hero-4.png",
       alt: "Handcrafted Leather Jackets - Premium Quality",
       caption: "Handcrafted Leather Jackets"
     },
     {
-      src: "/images/hero/hero-4.png",
+      src: "/images/hero/hero-3.png",
       alt: "Custom Leather Accessories - Bespoke Craftsmanship", 
       caption: "Custom Leather Accessories"
     }
@@ -38,20 +38,8 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
-  // Detect mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  // Auto-slide functionality with mobile optimization
+  // Auto-slide functionality
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isTransitioning) {
@@ -59,17 +47,17 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
           (prevIndex + 1) % heroImages.length
         )
       }
-    }, isMobile ? 10000 : 7000) // 10 seconds on mobile, 7 on desktop
+    }, 8000) // 8 seconds for all devices
 
     return () => clearInterval(interval)
-  }, [heroImages.length, isTransitioning, isMobile])
+  }, [heroImages.length, isTransitioning])
 
-  // Handle transition state with mobile-optimized timing
+  // Handle transition state
   useEffect(() => {
     setIsTransitioning(true)
-    const timer = setTimeout(() => setIsTransitioning(false), isMobile ? 800 : 600)
+    const timer = setTimeout(() => setIsTransitioning(false), 800)
     return () => clearTimeout(timer)
-  }, [currentImageIndex, isMobile])
+  }, [currentImageIndex])
 
   // Default hero content if no CMS data
   const defaultHero = {
@@ -181,7 +169,7 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ 
-                      duration: isMobile ? 0.6 : 0.4,
+                      duration: 0.5,
                       ease: "easeInOut"
                     }}
                     style={{ 
@@ -195,8 +183,8 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                       fill
                       className="object-cover object-center"
                       priority={currentImageIndex === 0}
-                      sizes="(max-width: 768px) 100vw, 100vw"
-                      quality={isMobile ? 75 : 85}
+                      sizes="100vw"
+                      quality={85}
                       placeholder="blur"
                       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0eH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAAAB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/AJvBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CAALSkcbbPo6/BAAAAAElFTkSuQmCC"
                     />
@@ -215,7 +203,7 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                     key={index}
                     onClick={() => !isTransitioning && setCurrentImageIndex(index)}
                     disabled={isTransitioning}
-                    className={`${isMobile ? 'w-4 h-4' : 'w-3 h-3'} rounded-full transition-all duration-300 pointer-events-auto touch-manipulation ${
+                    className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 pointer-events-auto touch-manipulation ${
                       index === currentImageIndex
                         ? 'bg-white shadow-lg'
                         : 'bg-white/50 hover:bg-white/70'
@@ -225,18 +213,18 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                 ))}
               </div>
 
-              {/* Navigation Arrows - Hidden on small mobile screens */}
+              {/* Navigation Arrows - Always visible */}
               <button
                 onClick={() => !isTransitioning && setCurrentImageIndex((prev) => 
                   prev === 0 ? heroImages.length - 1 : prev - 1
                 )}
                 disabled={isTransitioning}
-                className={`absolute left-4 top-1/2 -translate-y-1/2 ${isMobile ? 'w-12 h-12 hidden sm:flex' : 'w-10 h-10 flex'} bg-white/80 hover:bg-white rounded-full items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto touch-manipulation ${
+                className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto touch-manipulation ${
                   isTransitioning ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
                 aria-label="Previous image"
               >
-                <svg className={`${isMobile ? 'w-6 h-6' : 'w-5 h-5'} text-secondary-900`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-secondary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
@@ -245,12 +233,12 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                   (prev + 1) % heroImages.length
                 )}
                 disabled={isTransitioning}
-                className={`absolute right-4 top-1/2 -translate-y-1/2 ${isMobile ? 'w-12 h-12 hidden sm:flex' : 'w-10 h-10 flex'} bg-white/80 hover:bg-white rounded-full items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto touch-manipulation ${
+                className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto touch-manipulation ${
                   isTransitioning ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
                 aria-label="Next image"
               >
-                <svg className={`${isMobile ? 'w-6 h-6' : 'w-5 h-5'} text-secondary-900`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-secondary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -261,9 +249,9 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
         </motion.div>
       </div>
 
-      {/* Scroll indicator - positioned to avoid slider overlap */}
+      {/* Scroll indicator - centered below hero */}
       <motion.div
-        className="absolute bottom-8 left-8 z-20 hidden lg:block"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden lg:block"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
