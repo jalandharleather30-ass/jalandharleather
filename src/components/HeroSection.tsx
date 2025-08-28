@@ -37,17 +37,29 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
   ]
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
-  // Auto-slide functionality
+  // Auto-slide functionality with mobile optimization
   useEffect(() => {
+    // Longer interval on mobile for better performance
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        (prevIndex + 1) % heroImages.length
-      )
-    }, 6000) // Increased to 6 seconds for better user experience
+      if (!isTransitioning) {
+        setCurrentImageIndex((prevIndex) => 
+          (prevIndex + 1) % heroImages.length
+        )
+      }
+    }, isMobile ? 8000 : 6000) // 8 seconds on mobile, 6 on desktop
 
     return () => clearInterval(interval)
-  }, [heroImages.length])
+  }, [heroImages.length, isTransitioning])
+
+  // Handle transition state
+  useEffect(() => {
+    setIsTransitioning(true)
+    const timer = setTimeout(() => setIsTransitioning(false), 500)
+    return () => clearTimeout(timer)
+  }, [currentImageIndex])
 
   // Default hero content if no CMS data
   const defaultHero = {
@@ -155,14 +167,12 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                   <motion.div
                     className="absolute inset-0"
                     key={currentImageIndex}
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ 
-                      duration: 0.7, 
-                      ease: [0.4, 0, 0.2, 1],
-                      opacity: { duration: 0.5 },
-                      scale: { duration: 0.7 }
+                      duration: 0.4,
+                      ease: "easeInOut"
                     }}
                   >
                     <Image
@@ -172,6 +182,9 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                       className="object-cover object-center"
                       priority={currentImageIndex === 0}
                       sizes="100vw"
+                      quality={85}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0eH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAAAB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/AJvBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CBBX+CAALSkcbbPo6/BAAAAAElFTkSuQmCC"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-primary-900/20 to-transparent"></div>
                     <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg">
@@ -186,12 +199,13 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                 {heroImages.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentImageIndex(index)}
+                    onClick={() => !isTransitioning && setCurrentImageIndex(index)}
+                    disabled={isTransitioning}
                     className={`w-3 h-3 rounded-full transition-all duration-300 pointer-events-auto ${
                       index === currentImageIndex
                         ? 'bg-white shadow-lg'
                         : 'bg-white/50 hover:bg-white/70'
-                    }`}
+                    } ${isTransitioning ? 'opacity-50 cursor-not-allowed' : ''}`}
                     aria-label={`View image ${index + 1}`}
                   />
                 ))}
@@ -199,10 +213,13 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
 
               {/* Navigation Arrows */}
               <button
-                onClick={() => setCurrentImageIndex((prev) => 
+                onClick={() => !isTransitioning && setCurrentImageIndex((prev) => 
                   prev === 0 ? heroImages.length - 1 : prev - 1
                 )}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto"
+                disabled={isTransitioning}
+                className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto ${
+                  isTransitioning ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
                 aria-label="Previous image"
               >
                 <svg className="w-5 h-5 text-secondary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -210,10 +227,13 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                 </svg>
               </button>
               <button
-                onClick={() => setCurrentImageIndex((prev) => 
+                onClick={() => !isTransitioning && setCurrentImageIndex((prev) => 
                   (prev + 1) % heroImages.length
                 )}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto"
+                disabled={isTransitioning}
+                className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-20 pointer-events-auto ${
+                  isTransitioning ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
                 aria-label="Next image"
               >
                 <svg className="w-5 h-5 text-secondary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">

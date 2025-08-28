@@ -40,17 +40,17 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-soft sticky top-0 z-50">
-      <nav className="mx-auto flex max-w-8xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav className="mx-auto flex max-w-8xl items-center justify-between p-4 lg:px-8" aria-label="Global">
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-0.5 p-0.5">
+          <Link href="/" className="block">
             <span className="sr-only">Jalandhar Leather</span>
             <Image
-              className="h-16 w-auto"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto"
               src="/logo/site.png"
               alt="Jalandhar Leather"
-              width={240}
-              height={64}
+              width={280}
+              height={70}
               priority
             />
           </Link>
@@ -136,14 +136,14 @@ export default function Header() {
           <div className="fixed inset-0 z-50" />
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-secondary-900/10">
             <div className="flex items-center justify-between">
-              <Link href="/" className="-m-1.5 p-1.5">
+              <Link href="/" className="block">
                 <span className="sr-only">Jalandhar Leather</span>
                 <Image
-                  className="h-8 w-auto"
+                  className="h-10 w-auto"
                   src="/logo/site.png"
                   alt="Jalandhar Leather"
-                  width={150}
-                  height={32}
+                  width={200}
+                  height={50}
                 />
               </Link>
               <button

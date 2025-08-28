@@ -72,9 +72,9 @@ export default function Footer() {
               <Image
                 src="/logo/site.png"
                 alt="Jalandhar Leather"
-                width={180}
-                height={45}
-                className="h-12 w-auto"
+                width={220}
+                height={55}
+                className="h-12 sm:h-14 md:h-16 w-auto"
               />
             </Link>
             <p className="mt-6 text-sm leading-6 text-secondary-600 max-w-md">
