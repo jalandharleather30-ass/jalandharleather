@@ -1,0 +1,23 @@
+# Sanity Configuration
+NEXT_PUBLIC_SANITY_PROJECT_ID=aj487a19
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2025-08-27
+
+# Sanity API Token for write operations (server-side only)
+SANITY_API_TOKEN=skcVdS40F4W0sZ4prMqdnRiiahTozG8nrW8uVEHFK2FlbWMdfG4b6cqRuIQsLlQs1Ca9ymDRCPQJ2V0R9HFEW5PKP8TufkbRnqAbkJC2IQWqxutuvW8IvT8xMuG3xUntQXjYhWIWkvFAeu8MlE4kQhxx7WqpRCo15hicO4JeTiXQpfQtfrfj
+
+# Email Configuration (Gmail)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=jalandharleather30@gmail.com
+SMTP_PASS=your-app-password-here
+ADMIN_EMAIL=jalandharleather30@gmail.com
+
+# Spam Protection
+HONEYPOT_FIELD_NAME=website_url
+RATE_LIMIT_WINDOW=900000
+RATE_LIMIT_MAX=5
+
+# Node Configuration for Netlify
+NODE_VERSION=18
+NEXT_TELEMETRY_DISABLED=1
